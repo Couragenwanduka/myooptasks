@@ -1,94 +1,72 @@
-// create a class that contains user info and has methods that helps users to login and signup
-class userInfo{
-  constructor(){
-    this.userName= userName;
-    this.loginArr=loginArr;
-    this.userEmailInput=userEmailInput;
-    this.userPasswordInput= userPasswordInput;
-    }
- signup(){
-    this.loginArr.push(this.userEmailInput);
-    this.loginArr.push(this.userPasswordInput);
- }
- login(){
-   if(this.loginArr.includes(this.userEmailInput) && this.loginArr.includes(this.userPasswordInput)){
-    console.log(`welcome back ${this.userName}`)
-    }else{console.log("This account isn't registered")}
- }
-}
-//class contains the logic for displaying, adding and finding movie for the array
-class Movies{
- constructor(){
-  this.movies= movies
- }
-displaymovies(i){
-  console.log(" These are the  list of movies that are available")
-  for(i=0; i<this.movies.length; i++){ 
-    console.log(this.movies[i])
-    }
- }
- findmovie(value){
-  let found = false;
-  this.movies.forEach(element => {
-  if (element === value) {
-    found = true;
-    console.log(value+ " is available") // Value found in the array
-  } else if (element===value){
-      found= false;
-    console.log(value+ "is not available")
+class User{
+  constructor(ID,name){
+    this.ID=ID;
+    this.name=name;
+    this.userlist= userlist;
+    this.rentedMovies=[]
   }
-});
- return found;
- }
- addmovie(value){
-  this.movies.push(value);
-  console.log(`"new movie alert" ${value} was added to the list`)
- }
+  addUser(ID,name){
+    const newUser=  new User(ID,name);
+    this.userlist.push(newUser);
+    console.log(this.userlist) 
+
+  }
 }
-// this class contains the logic for renting and returning movies with time stamps
-class Renting{
+class Movie{
+  constructor(ID,title,year,genre,available=true,){
+    this.ID= ID;
+    this.title= title;
+    this.year= year;
+    this.genre= genre;
+    this.available=available;
+  }
+}
+
+class myMovieStore{
   constructor(){
-    this.movies= (movies);
-    this.userName= userName;
-    this.currentDate= currentDate;
-    this.newDate= newDate;
-    this.theMovie= (theMovie);
- }
-rentMovie(){
-    if(this.movies.includes(this.theMovie)){
-      console.log(` ${this.theMovie} was rented   by ${this.userName} on ${this.newDate}`)
-     }else{ console.log("the movie isn't available")}
- }
-returnmovie(){
-    if(this.movies.includes(this.theMovie)){
-      console.log(` ${this.theMovie} was returned by ${this.userName} on ${this.newDate}`)
-     } 
- }
+    this.isAvailable =true;
+    this.Movie= userlist1;
+    
+  }
+  addMovie(ID,title,year,genre) {
+    const newMovie = new Movie(ID,title,year,genre);
+    this.Movie.push(newMovie);
+    console.log(this.Movie)
+  }
+  rentmovie(name,value){
+    if(this.isAvailable){
+    const foundobject= this.Movie.find(obj=> obj.title ===value);
+    if(foundobject){
+      console.log( value + " " +`rented by ${name} on ${newDate}` )
+    }else{
+      console.log(`this isnt alavilable to rent`)
+    }
+    this.isAvailable=false
+  } else{
+    console.log(value + " "+ `has been rented out`)
+  }
+  }
+  returnMovie(){
+    console.log(`moive ${this.tile} returned`);
+    this.isAvailable= true;
+  }
 }
+
 
 // Get the current date and time
 const currentDate = new Date();
 // Add 1 hour to the current date
 const newDate = new Date(currentDate.getTime() + 60 * 60 * 1000);
-
-const theMovie="adire,"
-const userName="courage"
-const userEmailInput= "courageobunike@gmail.com";
-const userPasswordInput= "08068090917"
-const loginArr=[];
-const movies=["pose,","wednesday,","young sheldon,","blood&water,", "adire,", "lucifer,","nerver have i ever,","top boy,","suits,","flash,","Baki,","60 minutes,","12 strong."]
-const second= new Renting(theMovie)
-const display= new Movies()
-const myMovie = new userInfo(userEmailInput,userPasswordInput,movies);
-myMovie.signup()
-myMovie.login()
-display.displaymovies()
-display.findmovie("pose")
-display.addmovie("24hour")
-second.rentMovie()
-second.returnmovie()
-
-
+const userlist1=[]
+const userlist=[]
+const movieStore= new myMovieStore()
+const userSignUp=new User()
+userSignUp.addUser(1,"courage","cjagbavcjg")
+userSignUp.addUser(2,"courage","cjagbavcjg")
+movieStore.addMovie(2,"pose",2010,"drama");
+movieStore.addMovie(1,"adire",2020,"story")
+movieStore.rentmovie("courage","pose")
+movieStore.rentmovie("chidi","pose")
 
 
 
