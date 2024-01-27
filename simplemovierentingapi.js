@@ -3,7 +3,7 @@ class User{
     this.ID=ID;
     this.name=name;
     this.userlist= userlist;
-    this.rentedMovies=[]
+   
   }
   addUser(ID,name){
     const newUser=  new User(ID,name);
