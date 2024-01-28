@@ -22,4 +22,11 @@ welcome to courages statistic calcultor, this is a javascript code that allows t
    - The script will display the results based on your chosen calculations.
 
 
-      THANK YOU FOR MY DESCRIPTIVE STATISTICS CALCULATOR  
+      THANK YOU FOR  USING MY DESCRIPTIVE STATISTICS CALCULATOR  
+
+
+# Movie Rental console application (Courage Movie Rental Store)
+
+## OVERVIEW
+This contains codes that allow a user to rent sign in, rent movies and when the movie a movie is rented it can be rented to another person
+
