@@ -6,7 +6,7 @@ Courage Nduka
 ## Introduction 
 welcome to courages statistic calcultor, this is a javascript code that allows to perform some statistics problems
 
-##Usage
+## Usage
 **Perform Calculations**
    - After entering data, you can choose to perform specific calculations by entering the corresponding commands:
      - 1: Mean
@@ -22,4 +22,4 @@ welcome to courages statistic calcultor, this is a javascript code that allows t
    - The script will display the results based on your chosen calculations.
 
 
-     ***** THANK YOU FOR MY DESCRIPTIVE STATISTICS CALCULATOR  *****
+      THANK YOU FOR MY DESCRIPTIVE STATISTICS CALCULATOR  
