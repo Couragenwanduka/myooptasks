@@ -1,72 +1,71 @@
 class User{
-  constructor(ID,name){
-    this.ID=ID;
+  constructor(name){
     this.name=name;
-    this.userlist= userlist;
-   
-  }
-  addUser(ID,name){
-    const newUser=  new User(ID,name);
-    this.userlist.push(newUser);
-    console.log(this.userlist) 
-
+    this.rentedMovies=[];
   }
 }
 class Movie{
-  constructor(ID,title,year,genre,available=true,){
+  constructor(ID,title,year,genre){
     this.ID= ID;
     this.title= title;
     this.year= year;
     this.genre= genre;
-    this.available=available;
+    this.available=false;
   }
 }
 
 class myMovieStore{
   constructor(){
-    this.isAvailable =true;
-    this.Movie= userlist1;
+    this.Movies=[];
     
   }
-  addMovie(ID,title,year,genre) {
-    const newMovie = new Movie(ID,title,year,genre);
-    this.Movie.push(newMovie);
-    console.log(this.Movie)
+  addMovie(movie) {
+    this.Movies.push(movie);
+    
   }
-  rentmovie(name,value){
-    if(this.isAvailable){
-    const foundobject= this.Movie.find(obj=> obj.title ===value);
-    if(foundobject){
-      console.log( value + " " +`rented by ${name} on ${newDate}` )
-    }else{
-      console.log(`this isnt alavilable to rent`)
+  rentmovie(ID,user){
+    this.Movies.find((movie)=>{
+      if(movie.ID ===ID){
+        if(movie.isavaliable){
+          console.log("movie is already rented");
+          return;
+        }
+        movie.isavaliable=true;
+        user.rentedMovies.push(movie);
+        return;
+      }
+    });
+  }
+  returnMovie(ID,user){
+    const movieindex=
+    user.rentedMovies.findIndex((movie)=>movie.ID===ID);
+    if(movieindex ===-1){
+      console.log("movie not found");
+      return;
     }
-    this.isAvailable=false
-  } else{
-    console.log(value + " "+ `has been rented out`)
-  }
-  }
-  returnMovie(){
-    console.log(`moive ${this.tile} returned`);
-    this.isAvailable= true;
+    user.rentedMovies.splice(movieindex,1);
+    this.Movies.find((movie)=>{
+      if(movie.ID===ID){
+        movie.isavaliable=false;
+        return;
+      }
+    });
   }
 }
 
-
-// Get the current date and time
-const currentDate = new Date();
-// Add 1 hour to the current date
-const newDate = new Date(currentDate.getTime() + 60 * 60 * 1000);
-const userlist1=[]
-const userlist=[]
 const movieStore= new myMovieStore()
-const userSignUp=new User()
-userSignUp.addUser(1,"courage","cjagbavcjg")
-userSignUp.addUser(2,"courage","cjagbavcjg")
-movieStore.addMovie(2,"pose",2010,"drama");
-movieStore.addMovie(1,"adire",2020,"story")
-movieStore.rentmovie("courage","pose")
-movieStore.rentmovie("chidi","pose")
-
+const user1=new User("courage");
+const user2=new User("chidi");
+const movie1= new Movie(1,"Pose",2018,"Drama");
+const movie2= new Movie(2,"Rage",2022,"Action");
+movieStore.addMovie(movie1);
+movieStore.addMovie(movie2);
+movieStore.rentmovie(1,user1)
+movieStore.rentmovie(2,user2)
+//movieStore.returnMovie(1,user1);
+//movieStore.returnMovie(1,user1);
+console.log(user1);
+console.log(user2);
+console.log(movieStore.Movies);
 
 
